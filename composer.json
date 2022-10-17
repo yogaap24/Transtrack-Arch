@@ -26,6 +26,5 @@
                 "ArchSupport": "Transtrackid\\ArchSupport\\ArchSupport"
             }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
