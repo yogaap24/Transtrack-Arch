@@ -64,6 +64,7 @@ class ArchSupportCommand extends Command
         $path = [];
         $path['entity'] = __DIR__ . '/stubs/entity.stub';
         $path['table'] = __DIR__ . '/stubs/table.stub';
+        $path['policy'] = __DIR__ . '/stubs/policy.stub';
         $path['controller'] = __DIR__ . '/stubs/controller.stub';
         $path['service'] = __DIR__ . '/stubs/service.stub';
         $path['migration'] = __DIR__ . '/stubs/migration.stub';
