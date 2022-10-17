@@ -1,5 +1,5 @@
 {
-    "name": "transtrackid/arch-support",
+    "name": "transtrack/architecture-support",
     "description": "Library for supporting generate file in Transtrack.id Architecture",
     "type": "library",
     "require": {
