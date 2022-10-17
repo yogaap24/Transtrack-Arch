@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Models\Table;
+
+use App\Models\Entity\{model};
+
+class {model}Table extends {model}
+{
+    //
+}

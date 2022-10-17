@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Services\{model};
+
+use App\Models\Table\{model}Table;
+use App\Services\AppService;
+use App\Services\AppServiceInterface;
+
+class {model}Service extends AppService implements AppServiceInterface
+{
+
+    public function __construct({model}Table $model)
+    {
+        parent::__construct($model);
+    }
+
+
+    public function dataTable($filter)
+    {
+        return {model}Table::datatable($filter)->paginate($filter->entries ?? 15);
+    }
+
+    public function getById($id)
+    {
+        return {model}Table::findOrFail($id);
+    }
+
+    public function create($data)
+    {
+        return {model}Table::create([
+            'name' => $data['name'],
+        ]);
+    }
+
+    public function update($id, $data)
+    {
+        $row = {model}Table::findOrFail($id);
+        $row->update([
+            'name' => $data['name'],
+        ]);
+        return $row;
+    }
+
+    public function delete($id)
+    {
+        $row = {model}Table::findOrFail($id);
+        $row->delete();
+        return $row;
+    }
+}

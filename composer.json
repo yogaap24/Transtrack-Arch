@@ -1,0 +1,31 @@
+{
+    "name": "transtrackid/arch-support",
+    "description": "Library for supporting generate file in Transtrack.id Architecture",
+    "type": "library",
+    "require": {
+        "php": "^8.0.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Transtrackid\\ArchSupport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yoga Agung",
+            "email": "yoga.agung@transtrack.id"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Transtrackid\\ArchSupport\\ArchSupportServiceProvider"
+            ],
+            "aliases": {
+                "ArchSupport": "Transtrackid\\ArchSupport\\ArchSupport"
+            }
+        }
+    },
+    "minimum-stability": "dev"
+}
