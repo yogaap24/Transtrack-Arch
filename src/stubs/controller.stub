@@ -25,7 +25,7 @@ class {model}Controller extends ApiController
      * Redirect to view pages of the resource.
      *
      */
-    public function index(Request $request)
+    public function index()
     {
         // return to view pages
     }
