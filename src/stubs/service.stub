@@ -5,6 +5,7 @@ namespace App\Services\{model};
 use App\Models\Table\{model}Table;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
+use Yajra\DataTables\Facades\DataTables;
 
 class {model}Service extends AppService implements AppServiceInterface
 {
@@ -14,10 +15,10 @@ class {model}Service extends AppService implements AppServiceInterface
         parent::__construct($model);
     }
 
-
-    public function dataTable($filter)
+    public function getAll()
     {
-        return {model}Table::datatable($filter)->paginate($filter->entries ?? 15);
+        $model  =  $this->model->query();
+        return DataTables::eloquent($model)->toJson();
     }
 
     public function getById($id)
