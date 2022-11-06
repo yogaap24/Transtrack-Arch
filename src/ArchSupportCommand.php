@@ -65,6 +65,8 @@ class ArchSupportCommand extends Command
         $path['entity'] = __DIR__ . '/stubs/entity.stub';
         $path['table'] = __DIR__ . '/stubs/table.stub';
         $path['policy'] = __DIR__ . '/stubs/policy.stub';
+        $path['createRequest'] = __DIR__ . '/stubs/request-create.stub';
+        $path['updateRequest'] = __DIR__ . '/stubs/request-update.stub';
         $path['controller'] = __DIR__ . '/stubs/controller.stub';
         $path['service'] = __DIR__ . '/stubs/service.stub';
         $path['migration'] = __DIR__ . '/stubs/migration.stub';
@@ -124,6 +126,8 @@ class ArchSupportCommand extends Command
         $paths['entity'] = base_path("app/Models/Entity/$model.php");
         $paths['table'] = base_path("app/Models/Table/{$model}Table.php");
         $paths['policy'] = base_path("app/Policies/{$model}Policy.php");
+        $paths['createRequest'] = base_path("app/Http/Requests/$model/Create{$model}Request.php");
+        $paths['updateRequest'] = base_path("app/Http/Requests/$model/Update{$model}Request.php");
         $paths['controller'] = base_path("app/Http/Controllers/$model/{$model}Controller.php");
         $paths['service'] = base_path("app/Services/$model/{$model}Service.php");
         $paths['migration'] = base_path("database/migrations/{$date}_create_{$database}_table.php");
