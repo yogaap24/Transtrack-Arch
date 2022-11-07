@@ -41,6 +41,38 @@ class {model}Controller extends ApiController
     }
 
     /**
+     * Redirect to create page.
+     *
+     * @return ViewResponse
+     */
+    public function create()
+    {
+        // return view();
+    }
+
+    /**
+     * Redirect to edit page.
+     *
+     * @return ViewResponse
+     */
+    public function edit(string $id)
+    {
+        $data = $this->service->getById($id);
+        // return view();
+    }
+
+    /**
+     * Redirect to view page.
+     *
+     * @return ViewResponse
+     */
+    public function view(string $id)
+    {
+        $data = $this->service->getById($id);
+        // return view();
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request

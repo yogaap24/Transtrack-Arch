@@ -15,7 +15,7 @@ class {model}Service extends AppService implements AppServiceInterface
         parent::__construct($model);
     }
 
-    public function getAll()
+    public function dataTable()
     {
         $model  =  $this->model->query();
         return DataTables::eloquent($model)->toJson();
