@@ -37,7 +37,7 @@ class {model}Controller extends ApiController
      */
     public function datatable()
     {
-        return $this->service->getAll();
+        return $this->service->dataTable();
     }
 
     /**
@@ -78,7 +78,7 @@ class {model}Controller extends ApiController
      * @param Request $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Create{model}Request $request)
     {
         $data = $this->service->create($request);
         return $this->sendSuccess($data, null, 201);
@@ -103,7 +103,7 @@ class {model}Controller extends ApiController
      * @param String $id
      * @return JsonResponse
      */
-    public function update(Request $request, string $id)
+    public function update(Update{model}Request $request, string $id)
     {
         $data = $this->service->update($id, $request);
         return $this->sendSuccess($data, null, 200);
