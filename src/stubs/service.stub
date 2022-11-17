@@ -6,6 +6,7 @@ use App\Models\Table\{model}Table;
 use App\Services\AppService;
 use App\Services\AppServiceInterface;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class {model}Service extends AppService implements AppServiceInterface
 {
@@ -23,29 +24,57 @@ class {model}Service extends AppService implements AppServiceInterface
 
     public function getById($id)
     {
-        return {model}Table::findOrFail($id);
+        return $this->model->newQuery()->findOrFail($id);
     }
 
     public function create($data)
     {
-        return {model}Table::create([
-            'name' => $data['name'],
-        ]);
+        DB::beginTransaction();
+
+        try {
+            $row = $this->model->newQuery()->create([
+                'name'     => $data['name'],
+            ]);
+
+            DB::commit();
+            return $row;
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $this->sendError(null, $this->debug ? $exception->getMessage() : null);
+        }
     }
 
     public function update($id, $data)
     {
-        $row = {model}Table::findOrFail($id);
-        $row->update([
-            'name' => $data['name'],
-        ]);
-        return $row;
+        DB::beginTransaction();
+        $row = $this->model->newQuery()->findOrFail($id);
+
+        try {
+            $row->update([
+                'name'     => $data['name'],
+            ]);
+
+            DB::commit();
+            return $row;
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $this->sendError(null, $this->debug ? $exception->getMessage() : null);
+        }
     }
 
     public function delete($id)
     {
-        $row = {model}Table::findOrFail($id);
-        $row->delete();
-        return $row;
+        DB::beginTransaction();
+        $row = $this->model->newQuery()->findOrFail($id);
+
+        try {
+            $row->delete();
+
+            DB::commit();
+            return $row;
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return $this->sendError(null, $this->debug ? $exception->getMessage() : null);
+        }
     }
 }
